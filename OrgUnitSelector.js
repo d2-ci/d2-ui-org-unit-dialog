@@ -186,6 +186,7 @@ var OrgUnitSelector = function (_Component) {
                                 treeStyle: styles.orgUnitTree.treeStyle,
                                 labelStyle: styles.orgUnitTree.labelStyle,
                                 selectedLabelStyle: styles.orgUnitTree.selectedLabelStyle,
+                                checkboxColor: _this.props.checkboxColor,
                                 showFolderIcon: true,
                                 disableSpacer: true
                             })
@@ -306,7 +307,12 @@ OrgUnitSelector.propTypes = {
     /**
      * Root organisation unit
      */
-    root: PropTypes.object.isRequired
+    root: PropTypes.object.isRequired,
+
+    /**
+     * Checkbox color in org unit tree
+     */
+    checkboxColor: PropTypes.string
 };
 
 OrgUnitSelector.defaultProps = {
@@ -315,7 +321,8 @@ OrgUnitSelector.defaultProps = {
     level: [],
     group: [],
     levelOptions: [],
-    groupOptions: []
+    groupOptions: [],
+    checkboxColor: 'primary'
 };
 
 export default OrgUnitSelector;

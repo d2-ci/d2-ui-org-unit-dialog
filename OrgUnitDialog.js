@@ -56,7 +56,8 @@ var OrgUnitDialog = function (_React$PureComponent) {
                         levelOptions: _this.props.levelOptions,
                         groupOptions: _this.props.groupOptions,
                         handleOrgUnitClick: _this.props.handleOrgUnitClick,
-                        handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
+                        handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick,
+                        checkboxColor: _this.props.checkboxColor
                     })
                 ),
                 React.createElement(
@@ -87,6 +88,7 @@ OrgUnitDialog.defaultProps = {
     group: [],
     levelOptions: [],
     groupOptions: [],
+    checkboxColor: 'primary',
 
     // dialog related props
     open: false,
@@ -152,6 +154,11 @@ OrgUnitDialog.propTypes = {
     * Root organisation unit
     */
     root: PropTypes.object.isRequired,
+
+    /**
+     * Checkbox color in org unit tree
+     */
+    checkboxColor: PropTypes.string,
 
     // Dialog related props
     onClose: PropTypes.func.isRequired,
