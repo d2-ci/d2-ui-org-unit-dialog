@@ -80,26 +80,6 @@ var OrgUnitSelector = function (_Component) {
                 'div',
                 { style: styles.footer.index },
                 React.createElement(
-                    'div',
-                    { style: styles.footer.tooltipContainer },
-                    _this.props.selected.length > 0 && React.createElement(
-                        'div',
-                        { style: styles.footer.tooltip },
-                        _this.props.selected.length,
-                        ' selected.',
-                        React.createElement(
-                            'a',
-                            {
-                                onClick: _this.props.onDeselectAllClick,
-                                style: styles.footer.tooltip.link
-                                // eslint-disable-next-line
-                                , href: 'javascript:void(0)'
-                            },
-                            'Deselect all'
-                        )
-                    )
-                ),
-                React.createElement(
                     Grid,
                     { style: styles.footer.gridContainer, container: true },
                     React.createElement(
@@ -218,6 +198,26 @@ var OrgUnitSelector = function (_Component) {
                                 showFolderIcon: true,
                                 disableSpacer: true
                             })
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { style: styles.orgUnitsContainer.tooltipContainer },
+                        _this.props.selected.length > 0 && React.createElement(
+                            'div',
+                            { style: styles.orgUnitsContainer.tooltip },
+                            _this.props.selected.length,
+                            ' ',
+                            i18n.t('selected'),
+                            '.',
+                            React.createElement(
+                                'button',
+                                {
+                                    onClick: _this.props.onDeselectAllClick,
+                                    style: styles.orgUnitsContainer.tooltip.link
+                                },
+                                i18n.t('Deselect all')
+                            )
                         )
                     )
                 ),
