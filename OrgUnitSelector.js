@@ -54,12 +54,12 @@ var OrgUnitSelector = function (_Component) {
             _this.setState({
                 menuAnchorElement: event.currentTarget,
                 loadingChildren: true
-            });
-
-            loadChildren().then(function (children) {
-                _this.setState({
-                    children: Array.isArray(children) ? children : children.toArray(),
-                    loadingChildren: false
+            }, function () {
+                loadChildren().then(function (children) {
+                    _this.setState({
+                        children: Array.isArray(children) ? children : children.toArray(),
+                        loadingChildren: false
+                    });
                 });
             });
         };
@@ -192,15 +192,12 @@ var OrgUnitSelector = function (_Component) {
                     React.createElement(
                         'div',
                         { style: styles.scrollableContainer.index },
-                        React.createElement(
-                            'div',
-                            { style: styles.userOrgUnits.index },
-                            React.createElement(UserOrgUnitsPanel, {
-                                styles: styles.userOrgUnits,
-                                userOrgUnits: _this.props.userOrgUnits,
-                                handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
-                            })
-                        ),
+                        React.createElement(UserOrgUnitsPanel, {
+                            selected: _this.props.selected,
+                            styles: styles.userOrgUnits,
+                            userOrgUnits: _this.props.userOrgUnits,
+                            handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
+                        }),
                         React.createElement(
                             'div',
                             { style: styles.scrollableContainer.overlayContainer },
@@ -236,7 +233,7 @@ var OrgUnitSelector = function (_Component) {
                                         disabled: _this.state.loadingChildren,
                                         dense: true
                                     },
-                                    'Select children'
+                                    i18n.t('Select children')
                                 )
                             )
                         )
