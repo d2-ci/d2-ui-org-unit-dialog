@@ -9,16 +9,12 @@ import _inherits from 'babel-runtime/helpers/inherits';
 import React, { Component, Fragment } from 'react';
 import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree';
 import Grid from '@material-ui/core/Grid/Grid';
-import InputLabel from '@material-ui/core/InputLabel';
 import i18n from '@dhis2/d2-i18n';
-import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
-import Select from '@material-ui/core/Select/Select';
-import styles from './styles/OrgUnitDialog.style';
+import styles from './styles/OrgUnitSelector.style';
 import UserOrgUnitsPanel from './UserOrgUnitsPanel';
 import removeLastPathSegment from './util';
+import GridControl from './GridControl';
 
 var OrgUnitSelector = function (_Component) {
     _inherits(OrgUnitSelector, _Component);
@@ -81,80 +77,30 @@ var OrgUnitSelector = function (_Component) {
                 { style: styles.footer.index },
                 React.createElement(
                     Grid,
-                    { style: styles.footer.gridContainer, container: true },
-                    React.createElement(
-                        Grid,
-                        {
-                            item: true,
-                            xs: 4,
-                            style: styles.footer.gridContainer.gridItem
-                        },
-                        React.createElement(
-                            FormControl,
-                            { style: { width: '100%' } },
-                            React.createElement(
-                                InputLabel,
-                                { htmlFor: 'level-select' },
-                                i18n.t('Level')
-                            ),
-                            React.createElement(
-                                Select,
-                                {
-                                    value: _this.props.level,
-                                    onChange: _this.props.onLevelChange,
-                                    input: React.createElement(Input, { id: 'level-select' }),
-                                    renderValue: _this.renderLevelOptions,
-                                    disabled: _this.props.userOrgUnits.length > 0,
-                                    fullWidth: true,
-                                    multiple: true
-                                },
-                                _this.props.levelOptions.map(function (option) {
-                                    return React.createElement(
-                                        MenuItem,
-                                        { key: option.id, value: option.id },
-                                        option.displayName
-                                    );
-                                })
-                            )
-                        )
-                    ),
-                    React.createElement(
-                        Grid,
-                        {
-                            item: true,
-                            xs: 4,
-                            style: styles.footer.gridContainer.gridItem
-                        },
-                        React.createElement(
-                            FormControl,
-                            { style: { width: '100%' } },
-                            React.createElement(
-                                InputLabel,
-                                { htmlFor: 'group' },
-                                i18n.t('Group')
-                            ),
-                            React.createElement(
-                                Select,
-                                {
-                                    value: _this.props.group,
-                                    onChange: _this.props.onGroupChange,
-                                    input: React.createElement(Input, { name: 'group', id: 'group' }),
-                                    renderValue: _this.renderGroupOptions,
-                                    disabled: _this.props.userOrgUnits.length > 0,
-                                    multiple: true,
-                                    displayEmpty: true,
-                                    fullWidth: true
-                                },
-                                _this.props.groupOptions.map(function (option) {
-                                    return React.createElement(
-                                        MenuItem,
-                                        { key: option.id, value: option.id },
-                                        option.displayName
-                                    );
-                                })
-                            )
-                        )
-                    )
+                    {
+                        style: styles.footer.gridContainer,
+                        container: true
+                    },
+                    React.createElement(GridControl, {
+                        id: 'level-select',
+                        title: i18n.t('Level'),
+                        value: _this.props.level,
+                        onChange: _this.props.onLevelChange,
+                        options: _this.props.levelOptions,
+                        disabled: _this.props.userOrgUnits.length > 0,
+                        renderValue: _this.renderLevelOptions,
+                        multiple: true
+                    }),
+                    React.createElement(GridControl, {
+                        id: 'group-select',
+                        title: i18n.t('Group'),
+                        value: _this.props.group,
+                        onChange: _this.props.onGroupChange,
+                        options: _this.props.groupOptions,
+                        disabled: _this.props.userOrgUnits.length > 0,
+                        renderValue: _this.renderGroupOptions,
+                        multiple: true
+                    })
                 )
             );
         };
