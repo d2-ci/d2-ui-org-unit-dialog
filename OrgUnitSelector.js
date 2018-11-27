@@ -8,9 +8,13 @@ import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructo
 import _inherits from 'babel-runtime/helpers/inherits';
 import React, { Component, Fragment } from 'react';
 import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree';
-import Grid from '@material-ui/core/Grid/Grid';
 import i18n from '@dhis2/d2-i18n';
 import PropTypes from 'prop-types';
+
+import Grid from '@material-ui/core/Grid/Grid';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import styles from './styles/OrgUnitSelector.style';
 import UserOrgUnitsPanel from './UserOrgUnitsPanel';
 import removeLastPathSegment from './util';
@@ -39,8 +43,36 @@ var OrgUnitSelector = function (_Component) {
             });
         };
 
+        _this.onContextMenuClick = function (event, orgUnit, hasChildren, loadChildren) {
+            if (!hasChildren) {
+                return;
+            }
+
+            _this.setState({
+                menuAnchorElement: event.currentTarget,
+                loadingChildren: true
+            }, function () {
+                loadChildren().then(function (children) {
+                    _this.setState({
+                        children: Array.isArray(children) ? children : children.toArray(),
+                        loadingChildren: false
+                    });
+                });
+            });
+        };
+
         _this.normalizeOptions = function (result, item) {
             return _extends({}, result, _defineProperty({}, item.id, item));
+        };
+
+        _this.selectChildren = function () {
+            _this.closeContextMenu();
+
+            _this.props.handleMultipleOrgUnitsSelect(_this.state.children);
+        };
+
+        _this.closeContextMenu = function () {
+            _this.setState({ menuAnchorElement: null });
         };
 
         _this.renderGroupOptions = function (selected) {
@@ -115,15 +147,12 @@ var OrgUnitSelector = function (_Component) {
                     React.createElement(
                         'div',
                         { style: styles.scrollableContainer.index },
-                        React.createElement(
-                            'div',
-                            { style: styles.userOrgUnits.index },
-                            React.createElement(UserOrgUnitsPanel, {
-                                styles: styles.userOrgUnits,
-                                userOrgUnits: _this.props.userOrgUnits,
-                                handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
-                            })
-                        ),
+                        React.createElement(UserOrgUnitsPanel, {
+                            selected: _this.props.selected,
+                            styles: styles.userOrgUnits,
+                            userOrgUnits: _this.props.userOrgUnits,
+                            handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
+                        }),
                         React.createElement(
                             'div',
                             { style: styles.scrollableContainer.overlayContainer },
@@ -137,13 +166,31 @@ var OrgUnitSelector = function (_Component) {
                                 onSelectClick: _this.props.handleOrgUnitClick,
                                 onExpand: _this.onExpand,
                                 onCollapse: _this.onCollapse,
+                                onContextMenuClick: _this.onContextMenuClick,
                                 treeStyle: styles.orgUnitTree.treeStyle,
                                 labelStyle: styles.orgUnitTree.labelStyle,
                                 selectedLabelStyle: styles.orgUnitTree.selectedLabelStyle,
                                 checkboxColor: _this.props.checkboxColor,
                                 showFolderIcon: true,
                                 disableSpacer: true
-                            })
+                            }),
+                            React.createElement(
+                                Menu,
+                                {
+                                    anchorEl: _this.state.menuAnchorElement,
+                                    open: Boolean(_this.state.menuAnchorElement),
+                                    onClose: _this.closeContextMenu
+                                },
+                                React.createElement(
+                                    MenuItem,
+                                    {
+                                        onClick: _this.selectChildren,
+                                        disabled: _this.state.loadingChildren,
+                                        dense: true
+                                    },
+                                    i18n.t('Select children')
+                                )
+                            )
                         )
                     ),
                     React.createElement(
@@ -176,6 +223,9 @@ var OrgUnitSelector = function (_Component) {
         };
 
         _this.state = {
+            menuAnchorElement: null,
+            children: null,
+            loadingChildren: false,
             initiallyExpanded: _this.props.selected.map(function (ou) {
                 return removeLastPathSegment(ou.path);
             })
@@ -272,6 +322,11 @@ OrgUnitSelector.propTypes = {
      * On deselect all click handler
      */
     onDeselectAllClick: PropTypes.func.isRequired,
+
+    /**
+     * Function for handling multiple org units select
+     */
+    handleMultipleOrgUnitsSelect: PropTypes.func.isRequired,
 
     /**
      * Callback handler for selecting orgunit

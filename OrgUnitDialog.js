@@ -58,7 +58,8 @@ var OrgUnitDialog = function (_React$PureComponent) {
                         groupOptions: _this.props.groupOptions,
                         handleOrgUnitClick: _this.props.handleOrgUnitClick,
                         handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick,
-                        checkboxColor: _this.props.checkboxColor
+                        checkboxColor: _this.props.checkboxColor,
+                        handleMultipleOrgUnitsSelect: _this.props.handleMultipleOrgUnitsSelect
                     })
                 ),
                 React.createElement(
@@ -155,6 +156,12 @@ OrgUnitDialog.propTypes = {
     * Arguments supplied in callback: event, checked
     */
     handleUserOrgUnitClick: PropTypes.func.isRequired,
+
+    /**
+     * Callback handler for selecting user orgunit
+     * Arguments supplied in callback: event, checked
+     */
+    handleMultipleOrgUnitsSelect: PropTypes.func.isRequired,
 
     /**
     * Root organisation unit
