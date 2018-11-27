@@ -1,6 +1,34 @@
 export default {
     orgUnitsContainer: {
-        border: '1px solid #dedede'
+        border: '1px solid #dedede',
+        position: 'relative',
+
+        tooltipContainer: {
+            textAlign: 'center',
+            position: 'absolute',
+            bottom: 10,
+            width: '100%'
+        },
+
+        tooltip: {
+            display: 'inline-block',
+            borderRadius: 3,
+            background: '#535353',
+            padding: 10,
+            color: '#fff',
+
+            link: {
+                outline: 'none',
+                marginLeft: 5,
+                background: 'none',
+                color: 'inherit',
+                border: 'none',
+                padding: 0,
+                font: 'inherit',
+                textDecoration: 'underline',
+                cursor: 'pointer'
+            }
+        }
     },
     scrollableContainer: {
         index: {
@@ -71,7 +99,9 @@ export default {
     },
     footer: {
         index: {
-            marginTop: 10
+            marginTop: 10,
+            width: '100%',
+            position: 'relative'
         }
     }
 };
