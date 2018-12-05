@@ -61,7 +61,8 @@ var OrgUnitDialog = function (_React$PureComponent) {
                         checkboxColor: _this.props.checkboxColor,
                         handleMultipleOrgUnitsSelect: _this.props.handleMultipleOrgUnitsSelect,
                         deselectAllTooltipFontColor: _this.props.deselectAllTooltipFontColor,
-                        deselectAllTooltipBackgroundColor: _this.props.deselectAllTooltipBackgroundColor
+                        deselectAllTooltipBackgroundColor: _this.props.deselectAllTooltipBackgroundColor,
+                        displayNameProperty: _this.props.displayNameProperty
                     })
                 ),
                 React.createElement(
@@ -86,6 +87,7 @@ var OrgUnitDialog = function (_React$PureComponent) {
 }(React.PureComponent);
 
 OrgUnitDialog.defaultProps = {
+    displayNameProperty: 'displayName',
     selected: [],
     userOrgUnits: [],
     level: [],
@@ -103,6 +105,11 @@ OrgUnitDialog.defaultProps = {
 };
 
 OrgUnitDialog.propTypes = {
+    /**
+     * Display name property taken from user settings
+     */
+    displayNameProperty: PropTypes.string,
+
     /**
     * Array of objects with required param id
     */

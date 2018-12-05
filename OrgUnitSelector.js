@@ -174,6 +174,7 @@ var OrgUnitSelector = function (_Component) {
                                 labelStyle: styles.orgUnitTree.labelStyle,
                                 selectedLabelStyle: styles.orgUnitTree.selectedLabelStyle,
                                 checkboxColor: _this.props.checkboxColor,
+                                displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
                                 disableSpacer: true
                             }),
@@ -281,6 +282,11 @@ var OrgUnitSelector = function (_Component) {
 
 OrgUnitSelector.propTypes = {
     /**
+     * Display name property taken from user settings
+     */
+    displayNameProperty: PropTypes.string,
+
+    /**
      * Array of objects with required param id
      */
     selected: PropTypes.array,
@@ -365,6 +371,7 @@ OrgUnitSelector.propTypes = {
 };
 
 OrgUnitSelector.defaultProps = {
+    displayNameProperty: 'displayName',
     selected: [],
     userOrgUnits: [],
     level: [],
