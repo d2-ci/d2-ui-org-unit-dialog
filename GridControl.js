@@ -3,38 +3,48 @@ import _objectWithoutProperties from 'babel-runtime/helpers/objectWithoutPropert
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select/Select';
 import styles from './styles/GridControl.style';
 
 var GridControl = function GridControl(_ref) {
-    var id = _ref.id,
-        title = _ref.title,
+    var label = _ref.label,
+        placeholder = _ref.placeholder,
         options = _ref.options,
-        selectProps = _objectWithoutProperties(_ref, ['id', 'title', 'options']);
+        selectProps = _objectWithoutProperties(_ref, ['label', 'placeholder', 'options']);
+
+    var renderValue = function renderValue(selected) {
+        if (selected.length === 0) {
+            return React.createElement(
+                'span',
+                { style: styles.placeholder },
+                placeholder
+            );
+        }
+
+        return selectProps.renderValue(selected);
+    };
 
     return React.createElement(
         Grid,
         {
-            item: true,
+            style: styles.gridItem,
             xs: 4,
-            style: styles.gridContainer.gridItem
+            item: true
         },
         React.createElement(
             FormControl,
             { style: { width: '100%' } },
             React.createElement(
-                InputLabel,
-                { htmlFor: id },
-                title
+                'span',
+                { style: styles.label },
+                label
             ),
             React.createElement(
                 Select,
-                _extends({
-                    input: React.createElement(Input, { id: id })
-                }, selectProps, {
+                _extends({}, selectProps, {
+                    renderValue: renderValue,
+                    displayEmpty: true,
                     fullWidth: true
                 }),
                 options.map(function (option) {

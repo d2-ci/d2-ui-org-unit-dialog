@@ -25,6 +25,7 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
                     Grid,
                     {
                         key: orgUnitType.id,
+                        style: styles.gridItem,
                         item: true
                     },
                     React.createElement(Checkbox, {
@@ -36,9 +37,9 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
                             id: orgUnitType.id,
                             name: orgUnitType.id
                         },
-                        checkedIcon: React.createElement(CheckBoxIcon, { style: styles.checkbox }),
                         icon: React.createElement(CheckBoxOutlineBlankIcon, { style: styles.checkbox }),
-                        color: 'primary'
+                        checkedIcon: React.createElement(CheckBoxIcon, { style: styles.checkboxChecked }),
+                        color: props.checkboxColor
                     }),
                     React.createElement(
                         InputLabel,
@@ -57,6 +58,7 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
 };
 
 UserOrgUnitsPanel.propTypes = {
+    checkboxColor: PropTypes.string.isRequired,
     selected: PropTypes.array.isRequired,
     userOrgUnits: PropTypes.array.isRequired,
     handleUserOrgUnitClick: PropTypes.func.isRequired

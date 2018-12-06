@@ -106,16 +106,13 @@ var OrgUnitSelector = function (_Component) {
         _this.renderOptionsPanel = function () {
             return React.createElement(
                 'div',
-                { style: styles.footer.index },
+                { style: styles.footer },
                 React.createElement(
                     Grid,
-                    {
-                        style: styles.footer.gridContainer,
-                        container: true
-                    },
+                    { container: true },
                     React.createElement(GridControl, {
-                        id: 'level-select',
-                        title: i18n.t('Level'),
+                        label: i18n.t('Level'),
+                        placeholder: i18n.t('Select a level'),
                         value: _this.props.level,
                         onChange: _this.props.onLevelChange,
                         options: _this.props.levelOptions,
@@ -124,8 +121,8 @@ var OrgUnitSelector = function (_Component) {
                         multiple: true
                     }),
                     React.createElement(GridControl, {
-                        id: 'group-select',
-                        title: i18n.t('Group'),
+                        label: i18n.t('Group'),
+                        placeholder: i18n.t('Select a group'),
                         value: _this.props.group,
                         onChange: _this.props.onGroupChange,
                         options: _this.props.groupOptions,
@@ -138,6 +135,11 @@ var OrgUnitSelector = function (_Component) {
         };
 
         _this.render = function () {
+            var tooltipStyles = _extends({}, styles.orgUnitsContainer.tooltip, {
+                backgroundColor: _this.props.deselectAllTooltipBackgroundColor,
+                color: _this.props.deselectAllTooltipFontColor
+            });
+
             return React.createElement(
                 Fragment,
                 null,
@@ -151,7 +153,8 @@ var OrgUnitSelector = function (_Component) {
                             selected: _this.props.selected,
                             styles: styles.userOrgUnits,
                             userOrgUnits: _this.props.userOrgUnits,
-                            handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick
+                            handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick,
+                            checkboxColor: _this.props.checkboxColor
                         }),
                         React.createElement(
                             'div',
@@ -171,6 +174,7 @@ var OrgUnitSelector = function (_Component) {
                                 labelStyle: styles.orgUnitTree.labelStyle,
                                 selectedLabelStyle: styles.orgUnitTree.selectedLabelStyle,
                                 checkboxColor: _this.props.checkboxColor,
+                                displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
                                 disableSpacer: true
                             }),
@@ -198,11 +202,11 @@ var OrgUnitSelector = function (_Component) {
                         { style: styles.orgUnitsContainer.tooltipContainer },
                         _this.props.selected.length > 0 && React.createElement(
                             'div',
-                            { style: styles.orgUnitsContainer.tooltip },
+                            { style: tooltipStyles },
                             _this.props.selected.length,
                             ' ',
                             i18n.t('selected'),
-                            '.',
+                            ' -',
                             React.createElement(
                                 'button',
                                 {
@@ -278,6 +282,11 @@ var OrgUnitSelector = function (_Component) {
 
 OrgUnitSelector.propTypes = {
     /**
+     * Display name property taken from user settings
+     */
+    displayNameProperty: PropTypes.string,
+
+    /**
      * Array of objects with required param id
      */
     selected: PropTypes.array,
@@ -346,19 +355,32 @@ OrgUnitSelector.propTypes = {
     root: PropTypes.object.isRequired,
 
     /**
+     * Font color for text in deselect all tooltip
+     */
+    deselectAllTooltipFontColor: PropTypes.string,
+
+    /**
+     * Font color for background in deselect all tooltip
+     */
+    deselectAllTooltipBackgroundColor: PropTypes.string,
+
+    /**
      * Checkbox color in org unit tree
      */
     checkboxColor: PropTypes.string
 };
 
 OrgUnitSelector.defaultProps = {
+    displayNameProperty: 'displayName',
     selected: [],
     userOrgUnits: [],
     level: [],
     group: [],
     levelOptions: [],
     groupOptions: [],
-    checkboxColor: 'primary'
+    checkboxColor: 'primary',
+    deselectAllTooltipFontColor: 'white',
+    deselectAllTooltipBackgroundColor: 'gray'
 };
 
 export default OrgUnitSelector;
