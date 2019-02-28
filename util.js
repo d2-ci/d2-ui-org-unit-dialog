@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 /**
  * Remove last segment from OU path
  * @param path
@@ -12,4 +17,4 @@ var removeLastPathSegment = function removeLastPathSegment(path) {
     return path.substr(0, path.lastIndexOf('/'));
 };
 
-export default removeLastPathSegment;
+exports.default = removeLastPathSegment;
