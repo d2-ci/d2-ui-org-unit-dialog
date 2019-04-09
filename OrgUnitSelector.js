@@ -1,36 +1,96 @@
-import _defineProperty from 'babel-runtime/helpers/defineProperty';
-import _extends from 'babel-runtime/helpers/extends';
-import _toConsumableArray from 'babel-runtime/helpers/toConsumableArray';
-import _Object$getPrototypeOf from 'babel-runtime/core-js/object/get-prototype-of';
-import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
-import _createClass from 'babel-runtime/helpers/createClass';
-import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
-import _inherits from 'babel-runtime/helpers/inherits';
-import React, { Component, Fragment } from 'react';
-import { OrgUnitTree } from '@dhis2/d2-ui-org-unit-tree';
-import i18n from '@dhis2/d2-i18n';
-import PropTypes from 'prop-types';
+'use strict';
 
-import Grid from '@material-ui/core/Grid/Grid';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-import styles from './styles/OrgUnitSelector.style';
-import UserOrgUnitsPanel from './UserOrgUnitsPanel';
-import removeLastPathSegment from './util';
-import GridControl from './GridControl';
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _extends3 = require('babel-runtime/helpers/extends');
+
+var _extends4 = _interopRequireDefault(_extends3);
+
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _d2UiOrgUnitTree = require('@dhis2/d2-ui-org-unit-tree');
+
+var _d2I18n = require('@dhis2/d2-i18n');
+
+var _d2I18n2 = _interopRequireDefault(_d2I18n);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Grid = require('@material-ui/core/Grid/Grid');
+
+var _Grid2 = _interopRequireDefault(_Grid);
+
+var _Menu = require('@material-ui/core/Menu');
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+var _MenuItem = require('@material-ui/core/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _OrgUnitSelector = require('./styles/OrgUnitSelector.style');
+
+var _OrgUnitSelector2 = _interopRequireDefault(_OrgUnitSelector);
+
+var _UserOrgUnitsPanel = require('./UserOrgUnitsPanel');
+
+var _UserOrgUnitsPanel2 = _interopRequireDefault(_UserOrgUnitsPanel);
+
+var _util = require('./util');
+
+var _util2 = _interopRequireDefault(_util);
+
+var _GridControl = require('./GridControl');
+
+var _GridControl2 = _interopRequireDefault(_GridControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var OrgUnitSelector = function (_Component) {
-    _inherits(OrgUnitSelector, _Component);
+    (0, _inherits3.default)(OrgUnitSelector, _Component);
 
     function OrgUnitSelector(props) {
-        _classCallCheck(this, OrgUnitSelector);
+        (0, _classCallCheck3.default)(this, OrgUnitSelector);
 
-        var _this = _possibleConstructorReturn(this, (OrgUnitSelector.__proto__ || _Object$getPrototypeOf(OrgUnitSelector)).call(this, props));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (OrgUnitSelector.__proto__ || (0, _getPrototypeOf2.default)(OrgUnitSelector)).call(this, props));
 
         _this.onExpand = function (orgUnit) {
             _this.setState({
-                initiallyExpanded: [].concat(_toConsumableArray(_this.state.initiallyExpanded), [orgUnit.path])
+                initiallyExpanded: [].concat((0, _toConsumableArray3.default)(_this.state.initiallyExpanded), [orgUnit.path])
             });
         };
 
@@ -62,7 +122,7 @@ var OrgUnitSelector = function (_Component) {
         };
 
         _this.normalizeOptions = function (result, item) {
-            return _extends({}, result, _defineProperty({}, item.id, item));
+            return (0, _extends4.default)({}, result, (0, _defineProperty3.default)({}, item.id, item));
         };
 
         _this.selectChildren = function () {
@@ -104,15 +164,15 @@ var OrgUnitSelector = function (_Component) {
         };
 
         _this.renderOptionsPanel = function () {
-            return React.createElement(
+            return _react2.default.createElement(
                 'div',
-                { style: styles.footer },
-                React.createElement(
-                    Grid,
+                { style: _OrgUnitSelector2.default.footer },
+                _react2.default.createElement(
+                    _Grid2.default,
                     { container: true },
-                    React.createElement(GridControl, {
-                        label: i18n.t('Level'),
-                        placeholder: i18n.t('Select a level'),
+                    _react2.default.createElement(_GridControl2.default, {
+                        label: _d2I18n2.default.t('Level'),
+                        placeholder: _d2I18n2.default.t('Select a level'),
                         value: _this.props.level,
                         onChange: _this.props.onLevelChange,
                         options: _this.props.levelOptions,
@@ -120,9 +180,9 @@ var OrgUnitSelector = function (_Component) {
                         renderValue: _this.renderLevelOptions,
                         multiple: true
                     }),
-                    React.createElement(GridControl, {
-                        label: i18n.t('Group'),
-                        placeholder: i18n.t('Select a group'),
+                    _react2.default.createElement(_GridControl2.default, {
+                        label: _d2I18n2.default.t('Group'),
+                        placeholder: _d2I18n2.default.t('Select a group'),
                         value: _this.props.group,
                         onChange: _this.props.onGroupChange,
                         options: _this.props.groupOptions,
@@ -135,32 +195,32 @@ var OrgUnitSelector = function (_Component) {
         };
 
         _this.render = function () {
-            var tooltipStyles = _extends({}, styles.orgUnitsContainer.tooltip, {
+            var tooltipStyles = (0, _extends4.default)({}, _OrgUnitSelector2.default.orgUnitsContainer.tooltip, {
                 backgroundColor: _this.props.deselectAllTooltipBackgroundColor,
                 color: _this.props.deselectAllTooltipFontColor
             });
 
-            return React.createElement(
-                Fragment,
+            return _react2.default.createElement(
+                _react.Fragment,
                 null,
-                React.createElement(
+                _react2.default.createElement(
                     'div',
-                    { style: styles.orgUnitsContainer },
-                    React.createElement(
+                    { style: _OrgUnitSelector2.default.orgUnitsContainer },
+                    _react2.default.createElement(
                         'div',
-                        { style: styles.scrollableContainer.index },
-                        React.createElement(UserOrgUnitsPanel, {
+                        { style: _OrgUnitSelector2.default.scrollableContainer.index },
+                        _react2.default.createElement(_UserOrgUnitsPanel2.default, {
                             selected: _this.props.selected,
-                            styles: styles.userOrgUnits,
+                            styles: _OrgUnitSelector2.default.userOrgUnits,
                             userOrgUnits: _this.props.userOrgUnits,
                             handleUserOrgUnitClick: _this.props.handleUserOrgUnitClick,
                             checkboxColor: _this.props.checkboxColor
                         }),
-                        React.createElement(
+                        _react2.default.createElement(
                             'div',
-                            { style: styles.scrollableContainer.overlayContainer },
-                            _this.props.userOrgUnits.length > 0 && React.createElement('div', { style: styles.scrollableContainer.overlay }),
-                            React.createElement(OrgUnitTree, {
+                            { style: _OrgUnitSelector2.default.scrollableContainer.overlayContainer },
+                            _this.props.userOrgUnits.length > 0 && _react2.default.createElement('div', { style: _OrgUnitSelector2.default.scrollableContainer.overlay }),
+                            _react2.default.createElement(_d2UiOrgUnitTree.OrgUnitTree, {
                                 root: _this.props.root,
                                 selected: _this.props.selected.map(function (orgUnit) {
                                     return orgUnit.path;
@@ -170,55 +230,55 @@ var OrgUnitSelector = function (_Component) {
                                 onExpand: _this.onExpand,
                                 onCollapse: _this.onCollapse,
                                 onContextMenuClick: _this.onContextMenuClick,
-                                treeStyle: styles.orgUnitTree.treeStyle,
-                                labelStyle: styles.orgUnitTree.labelStyle,
-                                selectedLabelStyle: styles.orgUnitTree.selectedLabelStyle,
+                                treeStyle: _OrgUnitSelector2.default.orgUnitTree.treeStyle,
+                                labelStyle: _OrgUnitSelector2.default.orgUnitTree.labelStyle,
+                                selectedLabelStyle: _OrgUnitSelector2.default.orgUnitTree.selectedLabelStyle,
                                 checkboxColor: _this.props.checkboxColor,
                                 displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
                                 disableSpacer: true
                             }),
-                            React.createElement(
-                                Menu,
+                            _react2.default.createElement(
+                                _Menu2.default,
                                 {
                                     anchorEl: _this.state.menuAnchorElement,
                                     open: Boolean(_this.state.menuAnchorElement),
                                     onClose: _this.closeContextMenu
                                 },
-                                React.createElement(
-                                    MenuItem,
+                                _react2.default.createElement(
+                                    _MenuItem2.default,
                                     {
                                         onClick: _this.selectChildren,
                                         disabled: _this.state.loadingChildren,
                                         dense: true
                                     },
-                                    i18n.t('Select children')
+                                    _d2I18n2.default.t('Select children')
                                 )
                             )
                         )
                     ),
-                    React.createElement(
+                    _react2.default.createElement(
                         'div',
-                        { style: styles.orgUnitsContainer.tooltipContainer },
-                        _this.props.selected.length > 0 && React.createElement(
+                        { style: _OrgUnitSelector2.default.orgUnitsContainer.tooltipContainer },
+                        _this.props.selected.length > 0 && _react2.default.createElement(
                             'div',
                             { style: tooltipStyles },
                             _this.props.selected.length,
                             ' ',
-                            i18n.t('selected'),
+                            _d2I18n2.default.t('selected'),
                             ' -',
-                            React.createElement(
+                            _react2.default.createElement(
                                 'button',
                                 {
                                     onClick: _this.props.onDeselectAllClick,
-                                    style: styles.orgUnitsContainer.tooltip.link
+                                    style: _OrgUnitSelector2.default.orgUnitsContainer.tooltip.link
                                 },
-                                i18n.t('Deselect all')
+                                _d2I18n2.default.t('Deselect all')
                             )
                         )
                     )
                 ),
-                React.createElement(
+                _react2.default.createElement(
                     'div',
                     null,
                     _this.renderOptionsPanel()
@@ -231,13 +291,13 @@ var OrgUnitSelector = function (_Component) {
             children: null,
             loadingChildren: false,
             initiallyExpanded: _this.props.selected.map(function (ou) {
-                return removeLastPathSegment(ou.path);
+                return (0, _util2.default)(ou.path);
             })
         };
         return _this;
     }
 
-    _createClass(OrgUnitSelector, [{
+    (0, _createClass3.default)(OrgUnitSelector, [{
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps) {
             // if props.selected.length changed by more than 1, then another analytic object was selected
@@ -246,7 +306,7 @@ var OrgUnitSelector = function (_Component) {
                 // eslint-disable-next-line
                 this.setState({
                     initiallyExpanded: this.props.selected.map(function (ou) {
-                        return removeLastPathSegment(ou.path);
+                        return (0, _util2.default)(ou.path);
                     })
                 });
             } else {
@@ -265,7 +325,7 @@ var OrgUnitSelector = function (_Component) {
                             // eslint-disable-next-line
                             this.setState({
                                 initiallyExpanded: this.props.selected.map(function (ou) {
-                                    return removeLastPathSegment(ou.path);
+                                    return (0, _util2.default)(ou.path);
                                 })
                             });
 
@@ -276,98 +336,97 @@ var OrgUnitSelector = function (_Component) {
             }
         }
     }]);
-
     return OrgUnitSelector;
-}(Component);
+}(_react.Component);
 
 OrgUnitSelector.propTypes = {
     /**
      * Display name property taken from user settings
      */
-    displayNameProperty: PropTypes.string,
+    displayNameProperty: _propTypes2.default.string,
 
     /**
      * Array of objects with required param id
      */
-    selected: PropTypes.array,
+    selected: _propTypes2.default.array,
 
     /**
      * Array of user organisation units
      * See userOrgUnits.js for static options
      */
-    userOrgUnits: PropTypes.array,
+    userOrgUnits: _propTypes2.default.array,
 
     /**
      * Level multiselect array of ids
      */
-    level: PropTypes.array,
+    level: _propTypes2.default.array,
 
     /**
      * Group multiselect array of ids
      */
-    group: PropTypes.array,
+    group: _propTypes2.default.array,
 
     /**
      * Org unit level options.
      */
-    levelOptions: PropTypes.array,
+    levelOptions: _propTypes2.default.array,
 
     /**
      * Org unit groups options.
      */
-    groupOptions: PropTypes.array,
+    groupOptions: _propTypes2.default.array,
 
     /**
      * Setter function for level multiselect value
      */
-    onLevelChange: PropTypes.func.isRequired,
+    onLevelChange: _propTypes2.default.func.isRequired,
 
     /**
      * Setter for group multiselect value
      */
-    onGroupChange: PropTypes.func.isRequired,
+    onGroupChange: _propTypes2.default.func.isRequired,
 
     /**
      * On deselect all click handler
      */
-    onDeselectAllClick: PropTypes.func.isRequired,
+    onDeselectAllClick: _propTypes2.default.func.isRequired,
 
     /**
      * Function for handling multiple org units select
      */
-    handleMultipleOrgUnitsSelect: PropTypes.func.isRequired,
+    handleMultipleOrgUnitsSelect: _propTypes2.default.func.isRequired,
 
     /**
      * Callback handler for selecting orgunit
      * Arguments supplied in callback: event, orgunit
      */
-    handleOrgUnitClick: PropTypes.func.isRequired,
+    handleOrgUnitClick: _propTypes2.default.func.isRequired,
 
     /**
      * Callback handler for selecting user orgunit
      * Arguments supplied in callback: event, checked
      */
-    handleUserOrgUnitClick: PropTypes.func.isRequired,
+    handleUserOrgUnitClick: _propTypes2.default.func.isRequired,
 
     /**
      * Root organisation unit
      */
-    root: PropTypes.object.isRequired,
+    root: _propTypes2.default.object.isRequired,
 
     /**
      * Font color for text in deselect all tooltip
      */
-    deselectAllTooltipFontColor: PropTypes.string,
+    deselectAllTooltipFontColor: _propTypes2.default.string,
 
     /**
      * Font color for background in deselect all tooltip
      */
-    deselectAllTooltipBackgroundColor: PropTypes.string,
+    deselectAllTooltipBackgroundColor: _propTypes2.default.string,
 
     /**
      * Checkbox color in org unit tree
      */
-    checkboxColor: PropTypes.string
+    checkboxColor: _propTypes2.default.string
 };
 
 OrgUnitSelector.defaultProps = {
@@ -383,4 +442,4 @@ OrgUnitSelector.defaultProps = {
     deselectAllTooltipBackgroundColor: 'gray'
 };
 
-export default OrgUnitSelector;
+exports.default = OrgUnitSelector;
