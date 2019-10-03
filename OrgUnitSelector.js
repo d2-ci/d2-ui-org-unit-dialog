@@ -242,7 +242,7 @@ var OrgUnitSelector = function (_Component) {
                                 displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
                                 disableSpacer: true,
-                                useUserDataViewFallback: _this.props.useUserDataViewFallback
+                                isUserDataViewFallback: _this.props.isUserDataViewFallback
                             }),
                             _react2.default.createElement(
                                 _Menu2.default,
@@ -439,7 +439,10 @@ OrgUnitSelector.propTypes = {
      */
     checkboxColor: _propTypes2.default.string,
 
-    useUserDataViewFallback: _propTypes2.default.bool
+    /**
+     * Extra query parameter to use when requesting org unit data from the API
+     */
+    isUserDataViewFallback: _propTypes2.default.bool
 };
 
 OrgUnitSelector.defaultProps = {
@@ -453,7 +456,7 @@ OrgUnitSelector.defaultProps = {
     checkboxColor: 'primary',
     deselectAllTooltipFontColor: 'white',
     deselectAllTooltipBackgroundColor: 'gray',
-    useUserDataViewFallback: false
+    isUserDataViewFallback: false
 };
 
 exports.default = OrgUnitSelector;
