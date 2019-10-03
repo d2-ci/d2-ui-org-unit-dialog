@@ -218,9 +218,14 @@ var OrgUnitSelector = function (_Component) {
                         }),
                         _react2.default.createElement(
                             'div',
-                            { style: _OrgUnitSelector2.default.scrollableContainer.overlayContainer },
-                            _this.props.userOrgUnits.length > 0 && _react2.default.createElement('div', { style: _OrgUnitSelector2.default.scrollableContainer.overlay }),
-                            _react2.default.createElement(_d2UiOrgUnitTree.OrgUnitTree, {
+                            {
+                                style: _OrgUnitSelector2.default.scrollableContainer.overlayContainer
+                            },
+                            _this.props.userOrgUnits.length > 0 && _react2.default.createElement('div', {
+                                style: _OrgUnitSelector2.default.scrollableContainer.overlay
+                            }),
+                            _react2.default.createElement(_d2UiOrgUnitTree.OrgUnitTreeMultipleRoots, {
+                                roots: _this.props.roots,
                                 root: _this.props.root,
                                 selected: _this.props.selected.map(function (orgUnit) {
                                     return orgUnit.path;
@@ -236,7 +241,8 @@ var OrgUnitSelector = function (_Component) {
                                 checkboxColor: _this.props.checkboxColor,
                                 displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
-                                disableSpacer: true
+                                disableSpacer: true,
+                                isUserDataViewFallback: _this.props.isUserDataViewFallback
                             }),
                             _react2.default.createElement(
                                 _Menu2.default,
@@ -409,6 +415,11 @@ OrgUnitSelector.propTypes = {
     handleUserOrgUnitClick: _propTypes2.default.func.isRequired,
 
     /**
+     * Root organisation units whenever multiple roots are available
+     */
+    roots: _propTypes2.default.array,
+
+    /**
      * Root organisation unit
      */
     root: _propTypes2.default.object.isRequired,
@@ -426,7 +437,12 @@ OrgUnitSelector.propTypes = {
     /**
      * Checkbox color in org unit tree
      */
-    checkboxColor: _propTypes2.default.string
+    checkboxColor: _propTypes2.default.string,
+
+    /**
+     * Extra query parameter to use when requesting org unit data from the API
+     */
+    isUserDataViewFallback: _propTypes2.default.bool
 };
 
 OrgUnitSelector.defaultProps = {
@@ -439,7 +455,8 @@ OrgUnitSelector.defaultProps = {
     groupOptions: [],
     checkboxColor: 'primary',
     deselectAllTooltipFontColor: 'white',
-    deselectAllTooltipBackgroundColor: 'gray'
+    deselectAllTooltipBackgroundColor: 'gray',
+    isUserDataViewFallback: false
 };
 
 exports.default = OrgUnitSelector;
