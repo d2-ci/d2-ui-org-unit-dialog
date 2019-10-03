@@ -241,7 +241,8 @@ var OrgUnitSelector = function (_Component) {
                                 checkboxColor: _this.props.checkboxColor,
                                 displayNameProperty: _this.props.displayNameProperty,
                                 showFolderIcon: true,
-                                disableSpacer: true
+                                disableSpacer: true,
+                                useUserDataViewFallback: _this.props.useUserDataViewFallback
                             }),
                             _react2.default.createElement(
                                 _Menu2.default,
@@ -436,7 +437,9 @@ OrgUnitSelector.propTypes = {
     /**
      * Checkbox color in org unit tree
      */
-    checkboxColor: _propTypes2.default.string
+    checkboxColor: _propTypes2.default.string,
+
+    useUserDataViewFallback: _propTypes2.default.bool
 };
 
 OrgUnitSelector.defaultProps = {
@@ -449,7 +452,8 @@ OrgUnitSelector.defaultProps = {
     groupOptions: [],
     checkboxColor: 'primary',
     deselectAllTooltipFontColor: 'white',
-    deselectAllTooltipBackgroundColor: 'gray'
+    deselectAllTooltipBackgroundColor: 'gray',
+    useUserDataViewFallback: false
 };
 
 exports.default = OrgUnitSelector;
