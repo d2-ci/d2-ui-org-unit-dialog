@@ -7,9 +7,9 @@
     "Group": "组",
     "Select a group": "",
     "Select children": "选择下属",
-    "selected": "",
+    "selected": "选择的",
     "Deselect all": "",
     "User organisation unit": "",
-    "User sub-units": "",
-    "User sub-x2-units": ""
+    "User sub-units": "下属机构",
+    "User sub-x2-units": "二级下属机构"
 }
