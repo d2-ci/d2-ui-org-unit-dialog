@@ -3,13 +3,13 @@
     "Hide": "隐藏",
     "Update": "更新",
     "Level": "等级",
-    "Select a level": "",
+    "Select a level": "选择一个等级",
     "Group": "组",
-    "Select a group": "",
+    "Select a group": "选择一个组",
     "Select children": "选择下属",
-    "selected": "",
-    "Deselect all": "",
-    "User organisation unit": "",
-    "User sub-units": "",
-    "User sub-x2-units": ""
+    "selected": "选择的",
+    "Deselect all": "去全选",
+    "User organisation unit": "用户所在机构",
+    "User sub-units": "下属机构",
+    "User sub-x2-units": "二级下属机构"
 }

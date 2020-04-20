@@ -258,7 +258,7 @@ var OrgUnitSelector = function (_Component) {
                                         disabled: _this.state.loadingChildren,
                                         dense: true
                                     },
-                                    _d2I18n2.default.t('Select children')
+                                    _d2I18n2.default.t('Select all org units below')
                                 )
                             )
                         )
