@@ -130,6 +130,10 @@ var _translations47 = require('./zh/translations.json');
 
 var _translations48 = _interopRequireDefault(_translations47);
 
+var _translations49 = require('./zh_CN/translations.json');
+
+var _translations50 = _interopRequireDefault(_translations49);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var namespace = 'NAMESPACE'; //------------------------------------------------------------------------------
@@ -167,6 +171,7 @@ _d2I18n2.default.addResources('uk', namespace, _translations42.default);
 _d2I18n2.default.addResources('ur', namespace, _translations44.default);
 _d2I18n2.default.addResources('vi', namespace, _translations46.default);
 _d2I18n2.default.addResources('zh', namespace, _translations48.default);
+_d2I18n2.default.addResources('zh_CN', namespace, _translations50.default);
 
 _d2I18n2.default.setDefaultNamespace(namespace);
 _d2I18n2.default.changeLanguage('en');
