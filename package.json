@@ -40,6 +40,10 @@
     "postcss-rtl": "^1.3.2",
     "prettier": "^1.14.3"
   },
+  "sideEffects": [
+    "./src/locales/index.js",
+    "./src/locales/**/translations.json"
+  ],
   "version": "6.5.10",
   "private": false
 }
