@@ -1,5 +1,5 @@
 {
-    "Organisation units": "",
+    "Organisation units": "الوحدات التنظيمية",
     "Hide": "إخفاء",
     "Update": "تحديث",
     "Level": "",
@@ -10,6 +10,6 @@
     "selected": "محدد",
     "Deselect all": "",
     "User organisation unit": "",
-    "User sub-units": "",
-    "User sub-x2-units": ""
+    "User sub-units": "وحدات المستخدم الفرعية",
+    "User sub-x2-units": "وحدات المستخدم الفرعية من المستوى الثاني"
 }
