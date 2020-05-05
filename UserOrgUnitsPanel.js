@@ -50,13 +50,17 @@ var _UserOrgUnitsPanel2 = _interopRequireDefault(_UserOrgUnitsPanel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
+var getOrgUnitName = function getOrgUnitName(id) {
     var orgUnitNames = {
         USER_ORGUNIT: _d2I18n2.default.t('User organisation unit'),
         USER_ORGUNIT_CHILDREN: _d2I18n2.default.t('User sub-units'),
         USER_ORGUNIT_GRANDCHILDREN: _d2I18n2.default.t('User sub-x2-units')
     };
 
+    return orgUnitNames[id];
+};
+
+var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
     return _react2.default.createElement(
         'div',
         { style: _UserOrgUnitsPanel2.default.container },
@@ -68,8 +72,6 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
                 alignItems: 'center'
             },
             _userOrgUnits2.default.map(function (orgUnitType) {
-                var orgUnitName = orgUnitNames[orgUnitType.id];
-
                 return _react2.default.createElement(
                     _Grid2.default,
                     {
@@ -97,7 +99,7 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
                         _react2.default.createElement(
                             'span',
                             { style: _UserOrgUnitsPanel2.default.text },
-                            orgUnitName
+                            getOrgUnitName(orgUnitType.id)
                         )
                     )
                 );
