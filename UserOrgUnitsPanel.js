@@ -12,6 +12,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _d2I18n = require('@dhis2/d2-i18n');
+
+var _d2I18n2 = _interopRequireDefault(_d2I18n);
+
 var _Grid = require('@material-ui/core/Grid/Grid');
 
 var _Grid2 = _interopRequireDefault(_Grid);
@@ -45,6 +49,16 @@ var _UserOrgUnitsPanel = require('./styles/UserOrgUnitsPanel');
 var _UserOrgUnitsPanel2 = _interopRequireDefault(_UserOrgUnitsPanel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getOrgUnitName = function getOrgUnitName(id) {
+    var orgUnitNames = {
+        USER_ORGUNIT: _d2I18n2.default.t('User organisation unit'),
+        USER_ORGUNIT_CHILDREN: _d2I18n2.default.t('User sub-units'),
+        USER_ORGUNIT_GRANDCHILDREN: _d2I18n2.default.t('User sub-x2-units')
+    };
+
+    return orgUnitNames[id];
+};
 
 var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
     return _react2.default.createElement(
@@ -85,7 +99,7 @@ var UserOrgUnitsPanel = function UserOrgUnitsPanel(props) {
                         _react2.default.createElement(
                             'span',
                             { style: _UserOrgUnitsPanel2.default.text },
-                            orgUnitType.displayName
+                            getOrgUnitName(orgUnitType.id)
                         )
                     )
                 );
