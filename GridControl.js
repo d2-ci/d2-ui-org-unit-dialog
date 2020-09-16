@@ -76,7 +76,10 @@ var GridControl = function GridControl(_ref) {
                 (0, _extends3.default)({}, selectProps, {
                     renderValue: renderValue,
                     displayEmpty: true,
-                    fullWidth: true
+                    fullWidth: true,
+                    MenuProps: {
+                        style: { zIndex: 3100 }
+                    }
                 }),
                 options.map(function (option) {
                     return _react2.default.createElement(

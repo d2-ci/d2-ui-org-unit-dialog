@@ -249,7 +249,8 @@ var OrgUnitSelector = function (_Component) {
                                 {
                                     anchorEl: _this.state.menuAnchorElement,
                                     open: Boolean(_this.state.menuAnchorElement),
-                                    onClose: _this.closeContextMenu
+                                    onClose: _this.closeContextMenu,
+                                    style: { zIndex: 3100 }
                                 },
                                 _react2.default.createElement(
                                     _MenuItem2.default,
