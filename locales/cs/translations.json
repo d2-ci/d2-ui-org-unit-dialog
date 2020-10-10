@@ -5,11 +5,11 @@
     "Level": "Úroveň",
     "Select a level": "Vybrat úroveň",
     "Group": "Skupina",
-    "Select a group": "",
-    "Select all org units below": "",
+    "Select a group": "Vybrat skupinu",
+    "Select all org units below": "Vybrat všechny organizační jednotky níže",
     "selected": "vybráno",
     "Deselect all": "Odznačit vše",
-    "User organisation unit": "",
-    "User sub-units": "",
-    "User sub-x2-units": ""
+    "User organisation unit": "Organizační jednotka uživatele",
+    "User sub-units": " sub-units uživatele",
+    "User sub-x2-units": " sub-x2-units uživatele"
 }
