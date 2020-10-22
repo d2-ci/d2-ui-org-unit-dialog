@@ -1,15 +1,15 @@
 {
-    "Organisation units": "Ташкилий бирликлар",
+    "Organisation units": "Ташкилий бўлимлар",
     "Hide": "Яшириш",
     "Update": "Янгилаш",
     "Level": "Даража",
     "Select a level": "Поғонани танланг",
     "Group": "Гуруҳ",
     "Select a group": "Гуруҳни танланг",
-    "Select all org units below": "",
+    "Select all org units below": "Бўйсунувчи ташкилий бўлимларни танланг",
     "selected": "танланган",
     "Deselect all": "Барча танланганни бекор қилиш",
     "User organisation unit": "Ташкилий бўлим фойдаланувчиси",
     "User sub-units": "Фойдаланувчига бўйсунувчи бирликлар",
-    "User sub-x2-units": "Фойдаланувчига бўйсунувчи 2 даражали бирликлар"
+    "User sub-x2-units": "Фойдаланувчига бўйсунувчи 2 поғонадаги бўлимлар"
 }
